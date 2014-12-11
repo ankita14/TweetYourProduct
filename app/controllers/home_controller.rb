@@ -8,11 +8,14 @@ class HomeController < ApplicationController
   end
   
   def index
+    # redirect_to "http://www.google.com"
     if params[:id]
+      # redirect_to "http://www.google.com"
       shop = ShopifyAPI::Shop.current
       product = ShopifyAPI::Product.find(params[:id])
       status = "#{product.title} now available for $#{product.price_range} at #{shop.name} http://#{shop.domain}/products/#{product.handle}"
-      redirect_to "http://twitter.com/home?status=#{status}"
+      # redirect_to "http://www.google.com"
+      redirect_to "http://twitter.com/home?status=#{status.parameterize}"
     else
       # get 10 products
       @products = ShopifyAPI::Product.find(:all, :params => {:limit => 10})
