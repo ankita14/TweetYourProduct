@@ -6,7 +6,7 @@ class ShopifySessionRepository
   end
 
   def self.storage
-    @@storage.constantize
+    @@storage.to_s.constantize
   end
 
   def self.retrieve(id)
